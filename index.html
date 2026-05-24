@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y-E-S-H.net</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <h1><a href="index.html">Y-E-S-H.net</a></h1>
+
+    <p class="small">
+        last updated : 2026.05.25
+        / hand-coded html
+        / no system
+    </p>
+
+    <marquee>
+        this page is under construction · links may be broken · images may be missing · some pages may never be completed · certain files may disappear without notice · temporary archives are constantly being moved · texts may contain errors · unfinished thoughts remain unfinished · image loading may fail · unexpected windows may appear · some buttons may not function correctly · dates may be inaccurate · fragments collected from different places continue to accumulate · this website has no final version · please do not expect order · please do not expect consistency · some directories are intentionally left empty · old files may return at any time · contents are continuously edited and rearranged · proceed with unnecessary curiosity
+    </marquee>
+
+
+
+
+    <div class="ascii">
+     /\_/\   /\_/\
+    ( o.o ) ( o.o )
+     > ^ <   > ^ <
+
+    </div>
+
+
+    <table>
+
+        <tr>
+
+            <td width="20%">
+
+                <a href="about.html">about</a><br>
+
+                <span class="small">
+                    
+                </span>
+
+            </td>
+
+            <td>
+
+                a temporary introduction for future works.
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+
+                <a href="works.html">works</a>
+
+            </td>
+
+            <td>
+
+                <img src="image.png" alt="works" style="width:20%; display:block; margin-bottom:8px;">
+
+                    visuals, texts, and other things
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+
+                <a href="#">contact</a>
+
+            </td>
+
+            <td>
+
+                <a href="mailto:yes.sunghwan@gmail.com">
+
+            yes.sunghwan@gmail.com
+
+        </a><br>
+
+              
+            </td>
+
+        </tr>
+
+    </table>
+
+
+
+  
+
+</div>
+
+
+<div class="floating">
+
+  
+
+    <span id="quote"></span>
+
+</div>
+
+<script src="quotes-db.js"></script>
+<script>
+    function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function hasBatchim(w) {
+        const c = w.charCodeAt(w.length - 1);
+        return c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 !== 0;
+    }
+    const eun = w => w + (hasBatchim(w) ? "은" : "는");
+    const eul = w => w + (hasBatchim(w) ? "을" : "를");
+    const gwa = w => w + (hasBatchim(w) ? "과" : "와");
+    const ida = w => w + (hasBatchim(w) ? "이다" : "다");
+
+    const patterns = [
+        () => `${pick(adj)} ${eun(pick(noun))} 언제나 ${pick(adj)}.`,
+        () => `${pick(abst)} 없이는 ${pick(noun)}도 ${pick(verbCant)} 수 없다.`,
+        () => `${pick(verb)}지 않는 ${pick(noun)}도 결국 ${ida(pick(noun))}.`,
+        () => `${eun(pick(abst))} 그저 ${pick(adj)} ${pick(noun)}일 뿐이다.`,
+        () => `${pick(verb)}기를 거부하는 ${eul(pick(noun))} 믿지 마라.`,
+        () => `${eun(pick(noun))} 결국 ${pick(verbDoes)}. 언제나 그래왔다.`,
+        () => `${gwa(pick(abst))} ${eun(pick(abst))} 같은 ${pick(noun)} 안에 존재할 수 없다.`,
+    ];
+
+    document.getElementById("quote").textContent = pick(patterns)();
+
+    const marqueeTop = document.querySelector('marquee').getBoundingClientRect().top + window.scrollY;
+    document.querySelector('.floating').style.top = marqueeTop + 'px';
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+/* ===== FONT ===== */
+
+@font-face {
+
+    font-family:'JHWebDuo';
+
+    src:url('./woff/JHWebDuo-Regular.woff') format('woff');
+
+    font-weight:400;
+
+    font-style:normal;
+
+}
+
+
+@font-face {
+
+    font-family:'JHWebDuo';
+
+    src:url('./woff/JHWebDuo-Italic.woff') format('woff');
+
+    font-weight:400;
+
+    font-style:italic;
+
+}
+
+
+@font-face {
+
+    font-family:'JHWebDuo';
+
+    src:url('./woff/JHWebDuo-Bold.woff') format('woff');
+
+    font-weight:700;
+
+    font-style:normal;
+
+}
+
+
+@font-face {
+
+    font-family:'JHWebDuo';
+
+    src:url('./woff/JHWebDuo-BoldItalic.woff') format('woff');
+
+    font-weight:700;
+
+    font-style:italic;
+
+}
+
+
+
+/* ===== BODY ===== */
+
+body{
+
+    margin:20px;
+
+    background:#fffffd;
+
+    color:#111;
+
+    font-family:'JHWebDuo', serif;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    text-align:left;
+
+    word-break:keep-all;
+
+}
+
+
+
+/* ===== LAYOUT ===== */
+
+.wrap{
+
+    max-width:850px;
+
+    width:100%;
+
+}
+
+
+h1{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+
+.small{
+
+    font-size:12px;
+
+}
+
+
+a{
+
+    color:#06AE50;
+
+    text-decoration:underline;
+
+}
+
+
+a:visited{
+
+    color:#06AE50;
+
+}
+
+
+marquee{
+
+    margin:15px 0;
+
+    border-top:1px solid black;
+
+    border-bottom:1px solid black;
+
+    padding:4px;
+
+}
+
+
+.box{
+
+    border:1px solid black;
+
+    padding:10px;
+
+    margin:15px 0;
+
+    background:#fffdf7;
+
+}
+
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:15px;
+
+}
+
+
+td{
+
+    border:1px solid black;
+
+    padding:8px;
+
+    vertical-align:top;
+
+}
+
+
+.image-placeholder{
+
+    width:120px;
+
+    height:90px;
+
+    border:1px solid black;
+
+    background:#ddd;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+}
+
+
+.ascii{
+
+    white-space:pre;
+
+    font-family:monospace;
+
+    font-size:12px;
+
+    margin:20px 0;
+
+}
+
+
+.floating{
+
+    position:absolute;
+
+    right:20px;
+
+    top:120px;
+
+    width:180px;
+
+    border:1px dashed black;
+
+    background:#ffffcc;
+
+    padding:8px;
+
+    font-size:12px;
+
+}
+
+
+.tag{
+
+    font-size:12px;
+
+    text-decoration:none;
+
+    border:1px solid currentColor;
+
+    padding:0 3px;
+
+}
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:1100px){
+
+    .floating{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    body{
+
+        margin:12px;
+
+    }
+
+}

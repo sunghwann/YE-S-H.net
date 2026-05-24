@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y-E-S-H.net — works</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tag.active {
+            background: #111;
+            color: #fffffd;
+        }
+        tr.hidden {
+            display: none;
+        }
+        #works-table th {
+            text-align: left;
+            font-weight: normal;
+            border-bottom: 1px solid black;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        #works-table td {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 6px 8px;
+            vertical-align: middle;
+        }
+        #works-table .num {
+            color: #aaa;
+            font-size: 12px;
+            width: 20px;
+            padding-right: 0;
+        }
+        #works-table .col-title {
+            width: 25%;
+            padding-left: 2px;
+        }
+        #works-table .col-type {
+            width: 31%;
+        }
+        #works-table .col-format,
+        #works-table .col-year {
+            width: 14%;
+        }
+        #works-table .col-year {
+            text-align: right;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        #works-table .col-type .tag {
+            display: inline-block;
+            margin-right: 3px;
+            margin-bottom: 2px;
+        }
+        #works-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+        }
+        #works-table th.sortable:hover {
+            text-decoration: underline;
+        }
+        #works-table th .arrow {
+            margin-left: 3px;
+            opacity: 0.4;
+        }
+        #works-table th.sort-active .arrow {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <h1><a href="index.html">Y-E-S-H.net</a></h1>
+
+    <p class="small">
+        <a href="index.html">← index</a>
+        / works
+    </p>
+
+    <marquee>
+        this page is under construction · links may be broken · images may be missing · some pages may never be completed · certain files may disappear without notice · temporary archives are constantly being moved · texts may contain errors · unfinished thoughts remain unfinished · image loading may fail · unexpected windows may appear · some buttons may not function correctly · dates may be inaccurate · fragments collected from different places continue to accumulate · this website has no final version · please do not expect order · please do not expect consistency · some directories are intentionally left empty · old files may return at any time · contents are continuously edited and rearranged · proceed with unnecessary curiosity
+    </marquee>
+
+    <br>
+
+    <table id="works-table" style="width:100%; border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th class="num"></th>
+                <th>제목</th>
+                <th class="col-type sortable" data-col="type">종류<span class="arrow">↕</span></th>
+                <th class="col-format sortable" data-col="format">형식<span class="arrow">↕</span></th>
+                <th class="col-year sortable sort-active" data-col="year">연도<span class="arrow">↓</span></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr data-format="web">
+                <td class="num">04</td>
+                <td class="col-title"><a href="#">work title</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
+                    <a href="#" class="tag" data-category="type" data-value="interactive">interactive</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="web">web</a></td>
+                <td class="col-year">2026</td>
+            </tr>
+
+            <tr data-format="print">
+                <td class="num">03</td>
+                <td class="col-title"><a href="#">work title</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="text">text</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="print">print</a></td>
+                <td class="col-year">2025</td>
+            </tr>
+
+            <tr data-format="print">
+                <td class="num">02</td>
+                <td class="col-title"><a href="#">work title</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
+                    <a href="#" class="tag" data-category="type" data-value="text">text</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="print">print</a></td>
+                <td class="col-year">2025</td>
+            </tr>
+
+            <tr data-format="web">
+                <td class="num">01</td>
+                <td class="col-title"><a href="#">work title</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="other">other</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="web">web</a></td>
+                <td class="col-year">2024</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <p class="small">
+        작업은 계속 쌓이기도, 사라지기도 합니다. 순서는 중요하지 않습니다.
+    </p>
+
+</div>
+
+<script>
+    const active = { type: new Set(), format: new Set() };
+    let sortCol = 'year';
+    let sortDir = -1; // -1 = desc, 1 = asc
+
+    const tbody = document.querySelector('#works-table tbody');
+
+    function getValues(row, category) {
+        return Array.from(row.querySelectorAll(`.tag[data-category="${category}"]`))
+            .map(t => t.dataset.value);
+    }
+
+    function applyFilter() {
+        document.querySelectorAll('#works-table tbody tr').forEach(row => {
+            const types = getValues(row, 'type');
+            const fmts  = getValues(row, 'format');
+            const typeOk = active.type.size === 0   || types.some(v => active.type.has(v));
+            const fmtOk  = active.format.size === 0 || fmts.some(v => active.format.has(v));
+            row.classList.toggle('hidden', !(typeOk && fmtOk));
+        });
+    }
+
+    function applySort() {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+            let av, bv;
+            if (sortCol === 'year') {
+                av = parseInt(a.querySelector('.col-year').textContent.trim());
+                bv = parseInt(b.querySelector('.col-year').textContent.trim());
+            } else if (sortCol === 'type') {
+                av = getValues(a, 'type')[0] || '';
+                bv = getValues(b, 'type')[0] || '';
+            } else if (sortCol === 'format') {
+                av = getValues(a, 'format')[0] || '';
+                bv = getValues(b, 'format')[0] || '';
+            }
+            if (av < bv) return -1 * sortDir;
+            if (av > bv) return  1 * sortDir;
+            return 0;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+    }
+
+    function updateHeaders() {
+        document.querySelectorAll('#works-table th.sortable').forEach(th => {
+            const col = th.dataset.col;
+            const arrow = th.querySelector('.arrow');
+            th.classList.toggle('sort-active', col === sortCol);
+            arrow.textContent = col === sortCol ? (sortDir === -1 ? '↓' : '↑') : '↕';
+        });
+    }
+
+    document.querySelectorAll('#works-table th.sortable').forEach(th => {
+        th.addEventListener('click', () => {
+            if (sortCol === th.dataset.col) {
+                sortDir *= -1;
+            } else {
+                sortCol = th.dataset.col;
+                sortDir = sortCol === 'year' ? -1 : 1;
+            }
+            updateHeaders();
+            applySort();
+        });
+    });
+
+    document.querySelectorAll('.tag[data-category]').forEach(tag => {
+        tag.addEventListener('click', e => {
+            e.preventDefault();
+            const { category, value } = tag.dataset;
+            if (active[category].has(value)) {
+                active[category].delete(value);
+            } else {
+                active[category].add(value);
+            }
+            document.querySelectorAll(`.tag[data-category="${category}"][data-value="${value}"]`)
+                .forEach(t => t.classList.toggle('active', active[category].has(value)));
+            applyFilter();
+        });
+    });
+
+    applySort();
+</script>
+
+</body>
+
+</html>
