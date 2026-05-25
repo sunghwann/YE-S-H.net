@@ -3,7 +3,7 @@ function rand(min, max) {
 }
 
 function makeChar(c, i) {
-    return `<img src="shorts/${c.toUpperCase()}/${c.toUpperCase()}${i}.png">`;
+    return `<img src="shorts/${c.toUpperCase()}/${c.toUpperCase()}${i}.png" loading="lazy" decoding="async">`;
 }
 function makeChar2(c, i) {
     return `<img src="character/${c.toLowerCase()}/${c.toUpperCase()}${i}.png" style="transform: rotate(${rand(-1 * typoDeg, typoDeg)}deg) translateX(${rand(-typoLocation, typoLocation)}px);">`;
@@ -89,17 +89,22 @@ makeNav2(typo_text);
 var typo = document.getElementById("typo");
 
 function insertChar(node, c) {
+    const frag = document.createDocumentFragment();
     for(var j = 1; j <= charCnt[c]; j ++) {
-        node.innerHTML += makeChar(c, j);
+        const wrap = document.createElement("span");
+        wrap.innerHTML = makeChar(c, j);
+        frag.appendChild(wrap.firstChild);
     }
+    node.appendChild(frag);
 }
 
-insertChar(typo, charList[0]);
-var typoN = 1;
-playAlert = setInterval(function() {
+var typoN = 0;
+function loadNextCharGroup() {
     if(typoN < charList.length) {
         insertChar(typo, charList[typoN]);
-        typoN ++;
+        typoN++;
+        setTimeout(loadNextCharGroup, window.innerWidth <= 700 ? 900 : 250);
     }
-}, 500);
+}
+loadNextCharGroup();
 

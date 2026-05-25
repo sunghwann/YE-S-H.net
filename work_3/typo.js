@@ -80,8 +80,14 @@ function focusTypo() {
 }
 
 focusTypo();
-document.addEventListener("pointerdown", focusTypo);
-document.addEventListener("click", focusTypo);
+document.addEventListener("pointerdown", e => {
+    if (e.target.closest("a, button")) return;
+    focusTypo();
+});
+document.addEventListener("click", e => {
+    if (e.target.closest("a, button")) return;
+    focusTypo();
+});
 
 document.addEventListener("keydown", e => {
     if (e.isComposing || e.key === "Process") {

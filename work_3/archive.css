@@ -60,6 +60,13 @@ body {
     max-height: 40px;
     object-fit: contain;
 }
+.nav1,
+.nav2 {
+    position: relative;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
 
 .container {
     padding: 26px;
@@ -72,6 +79,7 @@ body {
 }
 .typo img {
     width: 100%;
+    min-width: 0;
 }
 
 @media (max-width: 700px) {

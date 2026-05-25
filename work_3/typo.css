@@ -61,6 +61,14 @@ body {
     max-height: 40px;
     object-fit: contain;
 }
+.nav1,
+.nav2,
+.nav3 button {
+    position: relative;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
 
 .nav3 {
     width: 76px;
