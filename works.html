@@ -64,6 +64,7 @@
         }
         #works-table .col-format{
             width: 12%;
+            white-space: nowrap;
         }
         #works-table .col-year {
             width: 8%;
@@ -91,6 +92,68 @@
         #works-table th.sort-active .arrow {
             opacity: 1;
         }
+
+        @media (max-width: 600px) {
+            #works-table,
+            #works-table tbody {
+                display: block;
+            }
+            #works-table thead {
+                display: none;
+            }
+            #works-table tbody tr {
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid #ccc;
+            }
+            #works-table tbody tr.hidden {
+                display: none;
+            }
+            #works-table td {
+                display: block;
+                width: auto !important;
+                padding: 0;
+                border: none;
+                line-height: 26px;
+            }
+            #works-table .num {
+                display: none;
+            }
+            #works-table .col-title {
+                padding-left: 0;
+                line-height: 28px;
+                margin-bottom: 5px;
+                white-space: normal;
+            }
+            #works-table .col-type,
+            #works-table .col-format,
+            #works-table .col-year {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 22px;
+            }
+            #works-table .col-format {
+                margin-left: 0;
+            }
+            #works-table .col-format::before {
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 12px;
+                border-left: 1px solid #ccc;
+                color: #ccc;
+                margin: 0 8px 0 0;
+                vertical-align: -1px;
+            }
+            #works-table .col-year {
+                font-size: 12px;
+                color: #aaa;
+                margin-left: 6px;
+            }
+            #works-table .tag {
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 
@@ -102,8 +165,8 @@
 
     <p class="small">
         <a href="index.html">← index</a>
-        / <span class="en-only">works</span><span class="ko-only">작업</span>
-        / <a href="#" id="lang-toggle">한</a>
+        | <span class="en-only">works</span><span class="ko-only">작업</span>
+        | <a href="#" id="lang-toggle">한</a>
     </p>
 
     <div class="marquee-box">
@@ -121,42 +184,35 @@
                 <th class="col-title"><div class="th-inner"><span class="en-only">title</span><span class="ko-only">제목</span></div></th>
                 <th class="col-type sortable" data-col="type"><div class="th-inner"><span class="en-only">type</span><span class="ko-only">종류</span><span class="arrow">↕</span></div></th>
                 <th class="col-format sortable" data-col="format"><div class="th-inner"><span class="en-only">format</span><span class="ko-only">형식</span><span class="arrow">↕</span></div></th>
-                <th class="col-year sortable sort-active" data-col="year"><div class="th-inner"><span class="en-only">year</span><span class="ko-only">연도</span><span class="arrow">↓</span></div></th>
+                <th class="col-year sortable" data-col="year"><div class="th-inner"><span class="en-only">year</span><span class="ko-only">연도</span><span class="arrow">↕</span></div></th>
             </tr>
         </thead>
 
         <tbody>
 
-            <tr data-format="web">
-                <td class="num">04</td>
-                <td class="col-title"><a href="work_4.html">work title</a></td>
+            <tr data-format="web print">
+                <td class="num">03</td>
+                <td class="col-title"><a href="work_3.html"><span class="en-only">A Retired Name</span><span class="ko-only">영구결명</span></a></td>
                 <td class="col-type">
                     <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
+                    <a href="#" class="tag" data-category="type" data-value="font">font</a>
                     <a href="#" class="tag" data-category="type" data-value="interactive">interactive</a>
                 </td>
-                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="web">web</a></td>
-                <td class="col-year">2026</td>
-            </tr>
-
-            <tr data-format="print">
-                <td class="num">03</td>
-                <td class="col-title"><a href="work_3.html">work title</a></td>
-                <td class="col-type">
-                    <a href="#" class="tag" data-category="type" data-value="text">text</a>
+                <td class="col-format">
+                    <a href="#" class="tag" data-category="format" data-value="web">web</a>
+                    <a href="#" class="tag" data-category="format" data-value="print">print</a>
                 </td>
-                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="print">print</a></td>
-                <td class="col-year">2025</td>
+                <td class="col-year">2023</td>
             </tr>
 
             <tr data-format="print">
                 <td class="num">02</td>
-                <td class="col-title"><a href="work_2.html">work title</a></td>
+                <td class="col-title"><a href="work_2.html">The Horse in Motion</a></td>
                 <td class="col-type">
                     <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
-                    <a href="#" class="tag" data-category="type" data-value="text">text</a>
                 </td>
                 <td class="col-format"><a href="#" class="tag" data-category="format" data-value="print">print</a></td>
-                <td class="col-year">2025</td>
+                <td class="col-year">2026</td>
             </tr>
 
             <tr data-format="web">
@@ -186,7 +242,7 @@
 
 <script>
     const active = { type: new Set(), format: new Set() };
-    let sortCol = 'year';
+    let sortCol = 'num';
     let sortDir = -1; // -1 = desc, 1 = asc
 
     const tbody = document.querySelector('#works-table tbody');
@@ -210,7 +266,10 @@
         const rows = Array.from(tbody.querySelectorAll('tr'));
         rows.sort((a, b) => {
             let av, bv;
-            if (sortCol === 'year') {
+            if (sortCol === 'num') {
+                av = parseInt(a.querySelector('.num').textContent.trim());
+                bv = parseInt(b.querySelector('.num').textContent.trim());
+            } else if (sortCol === 'year') {
                 av = parseInt(a.querySelector('.col-year').textContent.trim());
                 bv = parseInt(b.querySelector('.col-year').textContent.trim());
             } else if (sortCol === 'type') {
