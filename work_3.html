@@ -4,9 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ye-s-h.net</title>
+    <title>ye-s-h.net — work title</title>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+        .work-meta {
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .work-meta .year {
+            color: #aaa;
+        }
+        .work-image {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .work-image img {
+            max-width: 100%;
+            display: block;
+        }
+        .work-image.placeholder {
+            height: 300px;
+            border: 1px solid #ccc;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
 </head>
 
 <body class="en">
@@ -16,9 +45,9 @@
     <h1><a href="index.html">ye-s-h.net</a></h1>
 
     <p class="small">
-        last updated : 2026.05.25
-        / hand-coded html
-        / no system
+        <a href="index.html">← index</a>
+        / <a href="works.html"><span class="en-only">works</span><span class="ko-only">작업</span></a>
+        / work title
         / <a href="#" id="lang-toggle">한</a>
     </p>
 
@@ -27,107 +56,32 @@
         <marquee class="ko-only">이 페이지는 공사 중 · 링크가 깨져 있을 수 있음 · 이미지가 없을 수 있음 · 일부 페이지는 영원히 완성되지 않을 수 있음 · 파일이 예고 없이 사라질 수 있음 · 임시 아카이브는 계속 이동 중 · 텍스트에 오류가 있을 수 있음 · 미완성의 생각은 미완성인 채로 남음 · 이미지 로딩이 실패할 수 있음 · 예상치 못한 창이 열릴 수 있음 · 일부 버튼이 작동하지 않을 수 있음 · 날짜가 부정확할 수 있음 · 여러 곳에서 수집한 파편이 계속 쌓이는 중 · 이 웹사이트에는 최종본이 없음 · 질서를 기대하지 말 것 · 일관성을 기대하지 말 것 · 일부 디렉토리는 의도적으로 비워둠 · 오래된 파일이 언제든 돌아올 수 있음 · 내용은 계속 수정되고 재배치됨 · 불필요한 호기심으로 탐색할 것</marquee>
     </div>
 
+    <br>
 
-
-
-    <div class="ascii">
-     /\_/\   /\_/\
-    ( o.o ) ( o.o )
-     > ^ <   > ^ <
-
+    <div class="work-meta">
+        <span>work title</span>
+        <span class="year">2025</span>
+        <a href="works.html?type=text" class="tag" data-category="type" data-value="text">text</a>
+        <a href="works.html?format=print" class="tag" data-category="format" data-value="print">print</a>
     </div>
 
+    <div class="work-image placeholder">
+        image not yet loaded.
+    </div>
 
-    <table>
-
-        <tr>
-
-            <td width="20%">
-
-                <a href="about.html"><span class="en-only">about</span><span class="ko-only">소개</span></a><br>
-
-                <span class="small">
-                    
-                </span>
-
-            </td>
-
-            <td>
-
-                <span class="en-only">a temporary introduction</span>
-                <span class="ko-only">간단한 소개</span>
-
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <td>
-
-                <a href="works.html"><span class="en-only">works</span><span class="ko-only">작업들</span></a>
-
-            </td>
-
-            <td>
-
-                <img src="image.png" alt="works" style="width:20%; display:block; margin-bottom:8px;">
-
-                    <span class="en-only">visuals, texts, and other things...</span>
-                    <span class="ko-only">이미지, 텍스트, 그리고 더...</span>
-
-            </td>
-
-        </tr>
-
-
-        <tr>
-
-            <td>
-
-                <a href="#"><span class="en-only">contact</span><span class="ko-only">연락</span></a>
-
-            </td>
-
-            <td>
-
-                <a href="mailto:yes.sunghwan@gmail.com">
-
-            yes.sunghwan@gmail.com
-
-        </a><br>
-
-              
-            </td>
-
-        </tr>
-
-    </table>
-
-
-
-  
+    <p>
+        <span class="en-only">description not yet written.</span>
+        <span class="ko-only">설명이 아직 작성되지 않았습니다.</span>
+    </p>
 
 </div>
 
-
-<div class="floating">
-
-  
-
-    <span id="quote"></span>
-
-</div>
-
-<script src="quotes-db.js"></script>
 <script>
     document.getElementById('lang-toggle').addEventListener('click', e => {
         e.preventDefault();
         const isEn = document.body.classList.contains('en');
         document.body.classList.replace(isEn ? 'en' : 'ko', isEn ? 'ko' : 'en');
         e.target.textContent = isEn ? 'EN' : '한';
-        generateQuote();
         document.querySelectorAll('marquee').forEach(m => { m.stop(); m.start(); });
     });
 </script>

@@ -37,6 +37,36 @@ const verbDoes = [
     "응답한다", "대기한다", "반복된다", "멈춘다", "작동한다", "이동한다", "변환된다",
 ];
 
+const adjEn = [
+    "silent", "forgotten", "broken", "invisible", "temporary", "unfinished", "empty", "corrupted", "old",
+    "closed", "slow", "severed", "blurred", "half-erased", "missing", "misaligned", "read-only",
+    "hidden", "unnamed", "moved", "expired", "pending", "unresponsive", "loading", "archived",
+];
+
+const nounEn = [
+    "window", "path", "signal", "system", "memory", "error", "file", "page", "version", "trace",
+    "folder", "link", "cache", "log", "address", "screen", "input", "output", "directory", "server",
+    "record", "network", "timeout", "process", "update", "cursor", "clipboard", "history",
+];
+
+const abstEn = [
+    "memory", "order", "progress", "emptiness", "time", "stillness", "doubt", "delay", "forgetting",
+    "incompleteness", "repetition", "waiting", "confusion", "accuracy", "flow", "absence", "silence",
+    "beginning", "end", "boundary", "connection", "disconnection", "weight", "direction", "pattern",
+];
+
+const verbEn = [
+    "disappear", "return", "exist", "connect", "collapse", "remain", "load",
+    "open", "close", "run", "terminate", "save", "delete", "recover",
+    "respond", "wait", "repeat", "stop", "move", "convert",
+];
+
+const verbEnDoes = [
+    "disappears", "returns", "exists", "connects", "collapses", "remains", "loads",
+    "opens", "closes", "runs", "terminates", "saves", "deletes", "recovers",
+    "responds", "waits", "repeats", "stops", "moves", "converts",
+];
+
 function pick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -51,7 +81,7 @@ const gwa = w => w + (hasBatchim(w) ? "과" : "와");
 const ida = w => w + (hasBatchim(w) ? "이다" : "다");
 
 const patterns = [
-    () => `${pick(adj)} ${eun(pick(noun))} 언제나 ${pick(adj)}.`,
+    () => `${pick(adj)} ${eun(pick(noun))} 언제나 ${pick(adj)} 상태로 남는다.`,
     () => `${pick(abst)} 없이는 ${pick(noun)}도 ${pick(verbCant)} 수 없다.`,
     () => `${pick(verb)}지 않는 ${pick(noun)}도 결국 ${ida(pick(noun))}.`,
     () => `${eun(pick(abst))} 그저 ${pick(adj)} ${pick(noun)}일 뿐이다.`,
@@ -60,7 +90,22 @@ const patterns = [
     () => `${gwa(pick(abst))} ${eun(pick(abst))} 같은 ${pick(noun)} 안에 존재할 수 없다.`,
 ];
 
-document.getElementById("quote").textContent = pick(patterns)();
+const patternsEn = [
+    () => `the ${pick(adjEn)} ${pick(nounEn)} is always ${pick(adjEn)}.`,
+    () => `without ${pick(abstEn)}, no ${pick(nounEn)} can ${pick(verbEn)}.`,
+    () => `a ${pick(nounEn)} that does not ${pick(verbEn)} is still a ${pick(nounEn)}.`,
+    () => `${pick(abstEn)} is just a ${pick(adjEn)} ${pick(nounEn)}.`,
+    () => `never trust a ${pick(nounEn)} that refuses to ${pick(verbEn)}.`,
+    () => `the ${pick(nounEn)} always ${pick(verbEnDoes)}. it always has.`,
+    () => `${pick(abstEn)} and ${pick(abstEn)} cannot exist in the same ${pick(nounEn)}.`,
+];
 
-const marqueeTop = document.querySelector('marquee').getBoundingClientRect().top + window.scrollY;
+function generateQuote() {
+    const isKo = document.body.classList.contains('ko');
+    document.getElementById("quote").textContent = pick(isKo ? patterns : patternsEn)();
+}
+
+generateQuote();
+
+const marqueeTop = document.querySelector('marquee.en-only').getBoundingClientRect().top + window.scrollY;
 document.querySelector('.floating').style.top = marqueeTop + 'px';
