@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ye-s-h.net — works</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tag.active {
+            background: #06AE50;
+            color: #fffffd;
+        }
+        tr.hidden {
+            display: none;
+        }
+        #works-table {
+            font-size: 17.82px;
+            line-height: 30px;
+        }
+        #works-table th {
+            text-align: left;
+            font-weight: normal;
+            font-size: 17.82px;
+            line-height: 30px;
+            height: 38px;
+            overflow: hidden;
+            border-bottom: 1px solid black;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 4px 8px;
+            box-sizing: border-box;
+        }
+        .th-inner {
+            display: block;
+            height: 30px;
+            min-height: 30px;
+            max-height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        #works-table td {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 6px 8px;
+            vertical-align: middle;
+            line-height: 30px;
+            font-size: 17.82px;
+        }
+        #works-table .num {
+            color: #aaa;
+            width: 20px;
+            padding-right: 0;
+        }
+        #works-table .col-title {
+            width: 40%;
+            padding-left: 2px;
+        }
+        #works-table .col-type {
+            width: 30%;
+        }
+        #works-table .col-format{
+            width: 12%;
+            white-space: nowrap;
+        }
+        #works-table .col-year {
+            width: 8%;
+        }
+        #works-table .col-year {
+            text-align: left;
+            white-space: nowrap;
+        }
+        #works-table .tag {
+            display: inline-block;
+            margin-right: 3px;
+            margin-bottom: 2px;
+        }
+        #works-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+        }
+        #works-table th.sortable:hover {
+            text-decoration: underline;
+        }
+        #works-table th .arrow {
+            margin-left: 5px;
+            opacity: 0.4;
+        }
+        #works-table th.sort-active .arrow {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            #works-table,
+            #works-table tbody {
+                display: block;
+            }
+            #works-table thead {
+                display: none;
+            }
+            #works-table tbody tr {
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid #ccc;
+            }
+            #works-table tbody tr.hidden {
+                display: none;
+            }
+            #works-table td {
+                display: block;
+                width: auto !important;
+                padding: 0;
+                border: none;
+                line-height: 26px;
+            }
+            #works-table .num {
+                display: none;
+            }
+            #works-table .col-title {
+                padding-left: 0;
+                line-height: 28px;
+                margin-bottom: 5px;
+                white-space: normal;
+            }
+            #works-table .col-type,
+            #works-table .col-format,
+            #works-table .col-year {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 22px;
+            }
+            #works-table .col-format {
+                margin-left: 0;
+            }
+            #works-table .col-format::before {
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 12px;
+                border-left: 1px solid #ccc;
+                color: #ccc;
+                margin: 0 8px 0 0;
+                vertical-align: -1px;
+            }
+            #works-table .col-year {
+                font-size: 12px;
+                color: #aaa;
+                margin-left: 6px;
+            }
+            #works-table .tag {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="en">
+
+<div class="wrap">
+
+    <h1><a href="index.html">ye-s-h.net</a></h1>
+
+    <p class="small">
+        <a href="index.html">← index</a>
+        | <span class="en-only">works</span><span class="ko-only">작업</span>
+        | <a href="#" id="lang-toggle">한</a>
+    </p>
+
+    <div class="marquee-box">
+        <marquee class="en-only">this page is under construction · links may be broken · images may be missing · some pages may never be completed · certain files may disappear without notice · temporary archives are constantly being moved · texts may contain errors · unfinished thoughts remain unfinished · image loading may fail · unexpected windows may appear · some buttons may not function correctly · dates may be inaccurate · fragments collected from different places continue to accumulate · this website has no final version · please do not expect order · please do not expect consistency · some directories are intentionally left empty · old files may return at any time · contents are continuously edited and rearranged · proceed with unnecessary curiosity</marquee>
+        <marquee class="ko-only">이 페이지는 공사 중 · 링크가 깨져 있을 수 있음 · 이미지가 없을 수 있음 · 일부 페이지는 영원히 완성되지 않을 수 있음 · 파일이 예고 없이 사라질 수 있음 · 임시 아카이브는 계속 이동 중 · 텍스트에 오류가 있을 수 있음 · 미완성의 생각은 미완성인 채로 남음 · 이미지 로딩이 실패할 수 있음 · 예상치 못한 창이 열릴 수 있음 · 일부 버튼이 작동하지 않을 수 있음 · 날짜가 부정확할 수 있음 · 여러 곳에서 수집한 파편이 계속 쌓이는 중 · 이 웹사이트에는 최종본이 없음 · 질서를 기대하지 말 것 · 일관성을 기대하지 말 것 · 일부 디렉토리는 의도적으로 비워둠 · 오래된 파일이 언제든 돌아올 수 있음 · 내용은 계속 수정되고 재배치됨 · 불필요한 호기심으로 탐색할 것</marquee>
+    </div>
+
+    <div style="height:30px;"></div>
+
+    <table id="works-table" style="width:100%; border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th class="num"></th>
+                <th class="col-title"><div class="th-inner"><span class="en-only">title</span><span class="ko-only">제목</span></div></th>
+                <th class="col-type sortable" data-col="type"><div class="th-inner"><span class="en-only">type</span><span class="ko-only">종류</span><span class="arrow">↕</span></div></th>
+                <th class="col-format sortable" data-col="format"><div class="th-inner"><span class="en-only">format</span><span class="ko-only">형식</span><span class="arrow">↕</span></div></th>
+                <th class="col-year sortable" data-col="year"><div class="th-inner"><span class="en-only">year</span><span class="ko-only">연도</span><span class="arrow">↕</span></div></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr data-format="web print">
+                <td class="num">03</td>
+                <td class="col-title"><a href="work_3.html"><span class="en-only">A Retired Name</span><span class="ko-only">영구결명</span></a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
+                    <a href="#" class="tag" data-category="type" data-value="font">font</a>
+                    <a href="#" class="tag" data-category="type" data-value="interactive">interactive</a>
+                </td>
+                <td class="col-format">
+                    <a href="#" class="tag" data-category="format" data-value="web">web</a>
+                    <a href="#" class="tag" data-category="format" data-value="print">print</a>
+                </td>
+                <td class="col-year">2023</td>
+            </tr>
+
+            <tr data-format="print">
+                <td class="num">02</td>
+                <td class="col-title"><a href="work_2.html">The Horse in Motion</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="visual">visual</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="print">print</a></td>
+                <td class="col-year">2026</td>
+            </tr>
+
+            <tr data-format="web">
+                <td class="num">01</td>
+                <td class="col-title"><a href="work_1.html">chatgpt is a blurry jpeg of the web</a></td>
+                <td class="col-type">
+                    <a href="#" class="tag" data-category="type" data-value="font">font</a>
+                    <a href="#" class="tag" data-category="type" data-value="text">text</a>
+                    <a href="#" class="tag" data-category="type" data-value="interactive">interactive</a>
+                </td>
+                <td class="col-format"><a href="#" class="tag" data-category="format" data-value="web">web</a></td>
+                <td class="col-year">2023</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div style="height:15px;"></div>
+
+    <p class="small">
+        <span class="en-only">works continue to accumulate and disappear. order is not guaranteed.</span>
+        <span class="ko-only">작업은 계속 쌓이기도, 사라지기도 합니다. 순서는 중요하지 않습니다.</span>
+    </p>
+
+</div>
+
+<script>
+    const active = { type: new Set(), format: new Set() };
+    let sortCol = 'num';
+    let sortDir = -1; // -1 = desc, 1 = asc
+
+    const tbody = document.querySelector('#works-table tbody');
+
+    function getValues(row, category) {
+        return Array.from(row.querySelectorAll(`.tag[data-category="${category}"]`))
+            .map(t => t.dataset.value);
+    }
+
+    function applyFilter() {
+        document.querySelectorAll('#works-table tbody tr').forEach(row => {
+            const types = getValues(row, 'type');
+            const fmts  = getValues(row, 'format');
+            const typeOk = active.type.size === 0   || types.some(v => active.type.has(v));
+            const fmtOk  = active.format.size === 0 || fmts.some(v => active.format.has(v));
+            row.classList.toggle('hidden', !(typeOk && fmtOk));
+        });
+    }
+
+    function applySort() {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+            let av, bv;
+            if (sortCol === 'num') {
+                av = parseInt(a.querySelector('.num').textContent.trim());
+                bv = parseInt(b.querySelector('.num').textContent.trim());
+            } else if (sortCol === 'year') {
+                av = parseInt(a.querySelector('.col-year').textContent.trim());
+                bv = parseInt(b.querySelector('.col-year').textContent.trim());
+            } else if (sortCol === 'type') {
+                av = getValues(a, 'type')[0] || '';
+                bv = getValues(b, 'type')[0] || '';
+            } else if (sortCol === 'format') {
+                av = getValues(a, 'format')[0] || '';
+                bv = getValues(b, 'format')[0] || '';
+            }
+            if (av < bv) return -1 * sortDir;
+            if (av > bv) return  1 * sortDir;
+            return 0;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+    }
+
+    function updateHeaders() {
+        document.querySelectorAll('#works-table th.sortable').forEach(th => {
+            const col = th.dataset.col;
+            const arrow = th.querySelector('.arrow');
+            th.classList.toggle('sort-active', col === sortCol);
+            arrow.textContent = col === sortCol ? (sortDir === -1 ? '↓' : '↑') : '↕';
+        });
+    }
+
+    document.querySelectorAll('#works-table th.sortable').forEach(th => {
+        th.addEventListener('click', () => {
+            if (sortCol === th.dataset.col) {
+                sortDir *= -1;
+            } else {
+                sortCol = th.dataset.col;
+                sortDir = sortCol === 'year' ? -1 : 1;
+            }
+            updateHeaders();
+            applySort();
+        });
+    });
+
+    document.querySelectorAll('.tag[data-category]').forEach(tag => {
+        tag.addEventListener('click', e => {
+            e.preventDefault();
+            const { category, value } = tag.dataset;
+            if (active[category].has(value)) {
+                active[category].delete(value);
+            } else {
+                active[category].add(value);
+            }
+            document.querySelectorAll(`.tag[data-category="${category}"][data-value="${value}"]`)
+                .forEach(t => t.classList.toggle('active', active[category].has(value)));
+            applyFilter();
+        });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    ['type', 'format'].forEach(cat => {
+        params.getAll(cat).forEach(val => {
+            active[cat].add(val);
+            document.querySelectorAll(`.tag[data-category="${cat}"][data-value="${val}"]`)
+                .forEach(t => t.classList.add('active'));
+        });
+    });
+
+    applySort();
+    if (active.type.size || active.format.size) applyFilter();
+
+    document.getElementById('lang-toggle').addEventListener('click', e => {
+        e.preventDefault();
+        const isEn = document.body.classList.contains('en');
+        document.body.classList.replace(isEn ? 'en' : 'ko', isEn ? 'ko' : 'en');
+        e.target.textContent = isEn ? 'EN' : '한';
+        document.querySelectorAll('marquee').forEach(m => { m.stop(); m.start(); });
+    });
+</script>
+
+</body>
+
+</html>

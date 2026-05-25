@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TYPO TEST</title>
+</head>
+<body>
+<div id="viewer"></div>
+<script>
+var viewer = document.getElementById('viewer');
+
+viewer.innerHTML = `window.outerWidth ${window.outerWidth}<br>
+widndow.innerWidth ${window.innerWidth}<br>
+window.outerHeight ${window.outerHeight}<br>
+window.innerHeight ${window.innerHeight}<br>`;
+
+viewer.innerHTML += `Press any key. It will be displayed below.<br><br>`;
+
+window.addEventListener("keydown", e => {
+    viewer.innerHTML += `${e.key}<br>`;
+});
+</script>
+</body>
+</html>
