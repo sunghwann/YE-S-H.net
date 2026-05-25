@@ -31,6 +31,19 @@ html,body {
 
 }
 
+@media (max-width: 600px) {
+	.blurrysans{
+		font-size: 34px;
+		line-height: 1.35em;
+		margin-top: 18px;
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+	.ghgh {
+		display: none;
+	}
+}
+
 
 
 textarea
