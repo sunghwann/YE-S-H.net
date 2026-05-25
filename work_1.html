@@ -74,7 +74,7 @@
     </div>
 
     <div class="work-image">
-        <iframe src="work_1/index.html" style="width:100%; height:600px; border:1px solid #ccc; display:block;"></iframe>
+        <iframe id="work-frame" src="work_1/index.html" scrolling="no" style="width:100%; height:600px; border:1px solid #ccc; display:block; overflow:hidden;"></iframe>
     </div>
 
     <p>
@@ -87,6 +87,14 @@
 </div>
 
 <script>
+    const frame = document.getElementById('work-frame');
+    frame.addEventListener('load', function() {
+        try {
+            const h = frame.contentDocument.documentElement.scrollHeight;
+            frame.style.height = h + 'px';
+        } catch(e) {}
+    });
+
     document.getElementById('lang-toggle').addEventListener('click', e => {
         e.preventDefault();
         const isEn = document.body.classList.contains('en');
